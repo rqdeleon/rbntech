@@ -7,7 +7,6 @@ import { ChevronDownIcon, } from '@heroicons/react/24/solid'
 
 import Container from "@/components/container";
 import ThemeSwitch from "@/components/themeSwitch";
-import VercelLogo from "../public/img/vercel.svg";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { urlForImage } from "@/lib/sanity/image";
 
@@ -209,7 +208,7 @@ export default function Footer(props) {
             rel="noopener"
             className="relative block w-44">
             <Image
-              src={VercelLogo}
+              src='/img/mybranches.svg'
               alt="Powered by myBranches"
               unoptimized={true}
               width="150"
