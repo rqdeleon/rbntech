@@ -9,7 +9,6 @@ export default function Sidebar(props) {
   return (
     <div className="mt-5 font-sans">
       <Searchbar />
-
       {props.related && (
         <RelatedPosts
           related={props.related}
@@ -17,7 +16,7 @@ export default function Sidebar(props) {
         />
       )}
       {props.categories && (
-        <Categories categories={props.categories} />
+        <Categories categories={props.productCategory} />
       )}
     </div>
   );
@@ -27,7 +26,7 @@ function Searchbar() {
   return (
     <div>
       <h3 className="text-2xl font-bold dark:text-white">
-        Search Posts
+        Search
       </h3>
       <form action="/search" method="GET" className="mt-4">
         <SearchInput placeholder="Search" />

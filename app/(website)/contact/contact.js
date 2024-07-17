@@ -7,7 +7,8 @@ import useWeb3Forms from "@web3forms/react";
 import {
   MapPinIcon,
   EnvelopeIcon,
-  PhoneIcon
+  PhoneIcon,
+  ChatBubbleOvalLeftEllipsisIcon
 } from "@heroicons/react/24/outline";
 export default function Contact({ settings }) {
   const {
@@ -26,10 +27,19 @@ export default function Contact({ settings }) {
   // Please update the Access Key in the Sanity CMS - Site Congig Page
   const apiKey = settings?.w3ckey || "YOUR_ACCESS_KEY_HERE";
 
+  const googlemap = {
+    src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.4556390150005!2d121.05717637512441!3d14.343022886113362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d7ec585dd80d%3A0xd158a32ac57fafdf!2srbntech%20consumer%20goods%20trading!5e0!3m2!1sen!2sph!4v1721187754748!5m2!1sen!2sph',
+    width: 600,
+    height: 450,
+    loading: 'lazay',
+    referrerpolicy: 'no-referrer-when-downgrade',
+
+  }
+
   const { submit: onSubmit } = useWeb3Forms({
     access_key: apiKey,
     settings: {
-      from_name: "Stablo Template",
+      from_name: "RBNTECH Contact Form",
       subject: "New Contact Message from Stablo Website"
     },
     onSuccess: (msg, data) => {
@@ -54,18 +64,17 @@ export default function Contact({ settings }) {
 
       <div className="grid my-10 md:grid-cols-2">
         <div className="my-10">
-          <h2 className="text-2xl font-semibold dark:text-white">
-            Contact Stablo
+          <h2 className="text-2xl font-semibold dark:text-white uppercase">
+            Contact {settings.title} support
           </h2>
           <p className="max-w-sm mt-5">
-            Have something to say? We are here to help. Fill up the
-            form or send email or call phone.
+            We&#x2018;d love to hear from you! Whether you have a question about our products, need assistance, or want to give feedback, our team is here to help.
           </p>
 
           <div className="mt-5">
             <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-              <MapPinIcon className="w-4 h-4" />
-              <span>1734 Sanfransico, CA 93063</span>
+              <MapPinIcon className="flex-none w-4 h-4" />
+              <span className="flex-1">{settings.address}</span>
             </div>
             {settings?.email && (
               <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
@@ -81,6 +90,10 @@ export default function Contact({ settings }) {
                 <a href={`tel:${settings.phone}`}>{settings.phone}</a>
               </div>
             )}
+              <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
+                <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5" />
+                <a href="https://m.me/rbntechtrading">Messager</a>
+              </div>
           </div>
         </div>
         <div>

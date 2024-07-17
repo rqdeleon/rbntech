@@ -2,111 +2,106 @@
 
 import { Fragment } from "react";
 import { Menu, Transition, Disclosure } from "@headlessui/react";
-import Container from "@/components/container";
 import Link from "next/link";
 import Image from "next/image";
 import { urlForImage } from "@/lib/sanity/image";
 import cx from "clsx";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+
+import SearchInput from "@/components/ui/search";
+import Container from "@/components/container";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { myLoader } from "@/utils/all";
+import CartAction from "@/components/ui/cart-action";
 
 export default function Navbar(props) {
   const leftmenu = [
+
+  ];
+
+  const rightmenu = [
     {
       label: "Home",
       href: "/"
     },
     {
-      label: "About",
-      href: "/about"
+      label: "Products",
+      href: "/product",
+
+    },
+    {
+      label: "Blog",
+      href: "/blog"
     },
     {
       label: "Contact",
       href: "/contact"
-    }
-  ];
+    },
 
-  const rightmenu = [
     {
-      label: "Archive",
-      href: "/archive"
+      label: "Catalog",
+      href: "/catalog"
     },
-    {
-      label: "Pro Version",
-      href: "https://stablo-pro.web3templates.com/",
-      external: true,
-      badge: "new"
-    },
-    {
-      label: "Download",
-      href: "https://web3templates.com/templates/stablo-minimal-blog-website-template",
-      external: true
-    }
+
   ];
 
   const mobilemenu = [...leftmenu, ...rightmenu];
-
+  const isDesktop = useMediaQuery("(min-width:1025px)")
   return (
+  <header className="sticky top-0 z-10 bg-cyan-900 text-slate-50 w-full">
     <Container>
       <nav>
         <Disclosure>
           {({ open }) => (
             <>
-              <div className="flex flex-wrap justify-between md:flex-nowrap md:gap-10">
-                <div className="order-1 hidden w-full flex-col items-center justify-start md:order-none md:flex md:w-auto md:flex-1 md:flex-row md:justify-end">
-                  {leftmenu.map((item, index) => (
-                    <Fragment key={`${item.label}${index}`}>
-                      {item.children && item.children.length > 0 ? (
-                        <DropdownMenu
-                          menu={item}
-                          key={`${item.label}${index}`}
-                          items={item.children}
-                        />
-                      ) : (
-                        <Link
-                          href={item.href}
-                          key={`${item.label}${index}`}
-                          className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-                          target={item.external ? "_blank" : ""}
-                          rel={item.external ? "noopener" : ""}>
-                          {item.label}
-                        </Link>
-                      )}
-                    </Fragment>
-                  ))}
-                </div>
-                <div className="flex w-full items-center justify-between md:w-auto">
-                  <Link href="/" className="w-28 dark:hidden">
+              <div className="flex flex-wrap justify-between lg:gap-10">
+                <div className="flex w-full items-center justify-between lg:w-auto">
+                  <Link href="/" className="dark:hidden max-w-40">
                     {props.logo ? (
-                      <Image
-                        {...urlForImage(props.logo)}
-                        alt="Logo"
-                        priority={true}
-                        sizes="(max-width: 640px) 100vw, 200px"
-                      />
+                      <div className="flex gap-2 items-center">
+                        <Image
+                          {...urlForImage(props.logoalt)}
+                          width={50}
+                          height={50}
+                          alt="Logo"
+                          priority={true}
+                          sizes="(max-width: 640px) 100vw, 200px"
+                        />
+                        <h2 className="block text-center text-2xl font-bold">
+                          RBNTECH
+                        </h2>
+                      </div>
                     ) : (
-                      <span className="block text-center">
-                        Stablo
-                      </span>
+                      <h2 className="block text-center">
+                        RBNTECH
+                      </h2>
                     )}
                   </Link>
-                  <Link href="/" className="hidden w-28 dark:block">
+                  <Link href="/" className="hidden max-w-40 dark:block">
                     {props.logoalt ? (
-                      <Image
-                        {...urlForImage(props.logoalt)}
-                        alt="Logo"
-                        priority={true}
-                        sizes="(max-width: 640px) 100vw, 200px"
-                      />
+                      <div className="flex gap-2 items-center">
+                        <Image
+                          {...urlForImage(props.logoalt)}
+                          alt="Logo"
+                          width={50}
+                          height={50}
+                          priority={true}
+                          sizes="(max-width: 640px) 100vw, 200px"
+                        />
+                        <h3 className="block text-center text-2xl font-bold">
+                          RBNTECH
+                        </h3>
+                      </div>
                     ) : (
-                      <span className="block text-center">
-                        Stablo
-                      </span>
+                      <h3 className="block text-center text-2xl font-bold text-slate-800">
+                       RBNTECH
+                      </h3>
                     )}
                   </Link>
+                  {isDesktop? " ": <div className="ml-auto lg:hidden"><CartAction /></div>}
                   <Disclosure.Button
                     aria-label="Toggle Menu"
-                    className="ml-auto rounded-md px-2 py-1 text-gray-500 focus:text-blue-500 focus:outline-none dark:text-gray-300 md:hidden ">
+                    className="ml-2 rounded-md px-2 py-1 text-gray-50 hover:text-blue-500 focus:text-blue-500 focus:outline-none dark:text-gray-300 lg:hidden ">
                     <svg
                       className="h-6 w-6 fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -126,9 +121,17 @@ export default function Navbar(props) {
                       )}
                     </svg>
                   </Disclosure.Button>
+                </div> 
+                <div className="w-full flex-col items-center mt-4 justify-start lg:order-none lg:mt-0 lg:flex lg:w-auto lg:flex-auto lg:flex-row lg:justify-end">
+                  <div className="w-full flex-1">
+                      <div className="relative text-gray-400">
+                        <form action="/product" method="GET" className="mt-4">
+                          <SearchInput placeholder="Search Product" />
+                        </form>
+                      </div>
+                  </div>
                 </div>
-
-                <div className="order-2 hidden w-full flex-col items-center justify-start md:order-none md:flex md:w-auto md:flex-1 md:flex-row">
+                <div className="order-2 hidden w-full flex-col items-center justify-start lg:order-none lg:flex lg:w-auto lg:flex-1 lg:flex-row">
                   {rightmenu.map((item, index) => (
                     <Fragment key={`${item.label}${index}`}>
                       {item.children && item.children.length > 0 ? (
@@ -141,7 +144,7 @@ export default function Navbar(props) {
                         <Link
                           href={item.href}
                           key={`${item.label}${index}`}
-                          className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                          className="px-5 py-2 text-md uppercase font-semibold text-gray-50 hover:text-blue-500 "
                           target={item.external ? "_blank" : ""}
                           rel={item.external ? "noopener" : ""}>
                           <span> {item.label}</span>
@@ -154,10 +157,11 @@ export default function Navbar(props) {
                       )}
                     </Fragment>
                   ))}
+                  <CartAction />
                 </div>
               </div>
               <Disclosure.Panel>
-                <div className="order-2 -ml-4 mt-4 flex w-full flex-col items-center justify-start md:hidden">
+                <div className="order-2 -ml-4 mt-4 flex w-full flex-col items-center justify-start lg:hidden">
                   {mobilemenu.map((item, index) => (
                     <Fragment key={`${item.label}${index}`}>
                       {item.children && item.children.length > 0 ? (
@@ -171,7 +175,7 @@ export default function Navbar(props) {
                         <Link
                           href={item.href}
                           key={`${item.label}${index}`}
-                          className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                          className="w-full px-5 py-2 text-sm font-medium text-gray-50 hover:text-blue-500"
                           target={item.external ? "_blank" : ""}
                           rel={item.external ? "noopener" : ""}>
                           {item.label}
@@ -186,6 +190,7 @@ export default function Navbar(props) {
         </Disclosure>
       </nav>
     </Container>
+  </header>
   );
 }
 
@@ -201,7 +206,7 @@ const DropdownMenu = ({ menu, items, mobile }) => {
               "flex items-center gap-x-1 rounded-md px-5 py-2 text-sm font-medium  outline-none transition-all focus:outline-none focus-visible:text-indigo-500 focus-visible:ring-1 dark:focus-visible:bg-gray-800",
               open
                 ? "text-blue-500 hover:text-blue-500"
-                : " text-gray-600 dark:text-gray-400 ",
+                : " text-gray-50 dark:text-gray-400 ",
               mobile ? "w-full px-4 py-2 " : "inline-block px-4 py-2"
             )}>
             <span>{menu.label}</span>
@@ -209,12 +214,12 @@ const DropdownMenu = ({ menu, items, mobile }) => {
           </Menu.Button>
           <Transition
             as={Fragment}
-            enter="lg:transition lg:ease-out lg:duration-100"
-            enterFrom="lg:transform lg:opacity-0 lg:scale-95"
-            enterTo="lg:transform lg:opacity-100 lg:scale-100"
-            leave="lg:transition lg:ease-in lg:duration-75"
-            leaveFrom="lg:transform lg:opacity-100 lg:scale-100"
-            leaveTo="lg:transform lg:opacity-0 lg:scale-95">
+            enter="md:transition md:ease-out md:duration-100"
+            enterFrom="md:transform md:opacity-0 md:scale-95"
+            enterTo="md:transform md:opacity-100 md:scale-100"
+            leave="md:transition md:ease-in md:duration-75"
+            leaveFrom="md:transform md:opacity-100 md:scale-100"
+            leaveTo="md:transform md:opacity-0 md:scale-95">
             <Menu.Items
               className={cx(
                 "z-20 origin-top-left rounded-md  focus:outline-none  lg:absolute lg:left-0  lg:w-56",

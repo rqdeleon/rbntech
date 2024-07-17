@@ -13,7 +13,12 @@ export async function generateMetadata({ params }) {
 
 export default async function PostDefault({ params }) {
   const post = await getPostBySlug(params.slug);
-  return <PostPage post={post} />;
+  return (
+    <div>
+      <PostPage post={post} />
+      
+    </div>
+  );
 }
 
-// export const revalidate = 60;
+export const revalidate = 600;

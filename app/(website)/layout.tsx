@@ -2,6 +2,7 @@ import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
+import BrandSlidder from "@/components/sections/brandSlidder";
 
 async function sharedMetaData(params) {
   const settings = await getSettings();
@@ -12,14 +13,14 @@ async function sharedMetaData(params) {
     title: {
       default:
         settings?.title ||
-        "Stablo - Blog Template for Next.js & Sanity CMS",
-      template: "%s | Stablo"
+        "RBNTECH Consumer Goods Trading ",
+      template: "%s | RBNTECH"
     },
     description:
       settings?.description ||
-      "Stablo - popular open-source next.js and sanity blog template",
+      "RBNTECH Consumer Goods Trading (RCGT) is a national merchant trading, procurement and supply company.",
     keywords: ["Next.js", "Sanity", "Tailwind CSS"],
-    authors: [{ name: "Surjith" }],
+    authors: [{ name: "Ralf Quezar De Leon" }],
     canonical: settings?.url,
     openGraph: {
       images: [
@@ -33,7 +34,7 @@ async function sharedMetaData(params) {
       ]
     },
     twitter: {
-      title: settings?.title || "Stablo Template",
+      title: settings?.title || "RBNTECH",
       card: "summary_large_image"
     },
     robots: {
@@ -50,13 +51,11 @@ export async function generateMetadata({ params }) {
 export default async function Layout({ children, params }) {
   const settings = await getSettings();
   return (
-    <>
+    <div className="h-full">
       <Navbar {...settings} />
-
       <div>{children}</div>
-
       <Footer {...settings} />
-    </>
+    </div>
   );
 }
 // enable revalidate for all pages in this layout

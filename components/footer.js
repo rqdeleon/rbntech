@@ -1,52 +1,216 @@
+"use client"
+import Image from "next/image";
+import { Map, PhoneIcon, MailIcon, Facebook, LinkedinIcon } from "lucide-react";
+import Link from "next/link";
+import { Disclosure } from '@headlessui/react'
+import { ChevronDownIcon, } from '@heroicons/react/24/solid'
+
 import Container from "@/components/container";
 import ThemeSwitch from "@/components/themeSwitch";
-import Image from "next/image";
-import { myLoader } from "@/utils/all";
 import VercelLogo from "../public/img/vercel.svg";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { urlForImage } from "@/lib/sanity/image";
+
 
 export default function Footer(props) {
+  const isDesktop = useMediaQuery("(min-width:1025px)");
+  const quicklinks = [
+    {
+      href: '/product',
+      label: 'Product',
+    },
+    {
+      href: '/about',
+      label: 'About Us',
+    },
+    {
+      href: '/about',
+      label: 'How To Order',
+    },
+    {
+      href: '/about',
+      label: 'Order Bulk',
+    },
+  ]
+  const supporlinks = [
+    {
+      href: '/contact',
+      label: 'Contact us',
+    },
+    {
+      href: '/about',
+      label: 'Privacy Policy',
+    },
+    {
+      href: '/about',
+      label: 'Replacement Policy',
+    },
+    {
+      href: '/about',
+      label: 'Refund Policy',
+    },
+  ]
   return (
-    <Container className="mt-10 border-t border-gray-100 dark:border-gray-800">
+  <footer className="bg-cyan-900 text-slate-100 pt-10">
+    <Container>
+      <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 text-xl">
+        <div className="flex flex-col gap-y-5 lg:gap-y-10">
+          {props.logo ? (
+            <div className="flex gap-2 items-center justify-center lg:justify-normal w-full">
+              <div className="relative w-24">
+                <Image
+                  {...urlForImage(props.logo)}
+                  alt="Logo"
+                  priority={true}
+                />
+              </div>
+              <h3 className="block uppercase text-center text-2xl font-bold">
+                {props.title}
+              </h3>
+            </div>
+          ) : (
+            <h3 className="block uppercase md:hidden lg:block text-center">
+              {props.title}
+            </h3>
+          )}
+          <div className="flex gap-3">
+            <Map className="min-w-8 w-8 h-8" />
+            <p className="flex-1">
+              no. 3 8th St. Phase 1A, Pacita Complex 1, <br/>San Vicente 4023, San Pedro City, Philippines
+            </p>
+          </div>
+
+          <div className="flex gap-3">
+            <PhoneIcon className="min-w-7 w-7 h-7" />
+            <Link href={`viber://contact?number=${props.phone}`}>
+              {props.phone}
+            </Link>
+          </div>
+
+          <div className="flex gap-3">
+            <MailIcon className="min-w-7 w-7 h-7" />
+            <Link href={`mailto:${props.email}`}>
+              {props.email}
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-5 lg:mt-0 lg:px-10">
+          {isDesktop ? 
+            <>
+              <h3 className="block text-center text-2xl font-bold">
+                Quick Links
+              </h3>
+              <ul className="mt-12 flex flex-col gap-y-4">
+                {
+                  quicklinks.map((link, index)=>(
+                    <li key={index}>
+                      <Link href={link.href}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))
+                }
+              </ul>
+            </>
+          :
+            <Disclosure as="div" className="border-b-2 border-b-gray-300 border-opacity-40 pb-5">
+              <Disclosure.Button className="group flex items-center gap-2 text-2xl font-semibold">
+                  Quick Links
+                <ChevronDownIcon className="w-5 group-data-[open]:rotate-180" />
+              </Disclosure.Button>
+              <Disclosure.Panel>
+                <ul className="mt-12 flex flex-col gap-y-4">
+                { quicklinks.map((link, index)=>(
+                    <li key={index}>
+                      <Link href={link.href}>
+                        {link.label}
+                      </Link>
+                    </li>
+                ))}
+                </ul>
+              </Disclosure.Panel>
+            </Disclosure>
+          
+          }
+        </div>
+          
+        <div className="mt-5 lg:mt-0 lg:px-10">
+            { isDesktop ?
+              <>
+                <h3 className="block text-center text-2xl font-bold">
+                  Support
+                </h3> 
+                <ul className="mt-12 flex flex-col gap-y-4">
+                  {supporlinks.map((link, index)=>(
+                    <li key={index}>
+                      <Link href={link.href}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+              :
+                <Disclosure as="div" className="border-b-2 border-b-gray-300 border-opacity-40 pb-5 transition-all duration-300 delay-200">
+                  <Disclosure.Button className="group flex items-center gap-2 text-2xl font-semibold">
+                      Support
+                    <ChevronDownIcon className="w-5 group-data-[open]:rotate-180" />
+                  </Disclosure.Button>
+                  <Disclosure.Panel>
+                    <ul className="mt-12 flex flex-col gap-y-4">
+                    {supporlinks.map((link, index)=>(
+                      <li key={index}>
+                        <Link href={link.href}>
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                    </ul>
+                  </Disclosure.Panel>
+                </Disclosure>
+              }
+        </div>
+
+        <div className="lg:flex lg:gap-4 lg:mt-5">
+          <h3 className="text-center lg:text-start text-2xl font-bold">
+            Get in Touch:
+          </h3> 
+          <ul className="mt-12 flex flex-col gap-y-4 lg:mt-0">
+            { props.social.map(
+              (sm)=>(
+              <li key={sm.url}>
+                <Link href={sm.url} target="blank">
+                  { 
+                    sm.media == "facebook" ? <Facebook /> : sm.medial
+                  }
+                </Link>
+              </li>
+            )
+            )}
+          </ul>
+        </div>
+
+      </section>
+    </Container>
+    <Container className="mt-10 border-t border-gray-100/40 dark:border-gray-800">
       <div className="text-center text-sm">
         Copyright © {new Date().getFullYear()} {props?.copyright}. All
         rights reserved.
       </div>
       <div className="mt-1 flex justify-center gap-1 text-center text-sm text-gray-500 dark:text-gray-600">
-        <span>
-          {" "}
-          Made by{" "}
-          {/*  // ** 🙏  Can I ask you a favor? 🙏 **
-            // Please do not remove the below link.
-           // It helps us to grow & continue our work. Thank you.
-          // OR Purchase PRO version for commercial license.  */}
-          <a
-            href="https://web3templates.com/?ref=stablo-template"
-            rel="noopener"
-            target="_blank">
-            Web3Templates
-          </a>
-        </span>
         <span>&middot;</span>
-        <span>
-          {" "}
-          <a
-            href="https://github.com/web3templates/stablo"
-            rel="noopener"
-            target="_blank">
-            Github
-          </a>
-        </span>
       </div>
       <div className="mt-2 flex items-center justify-between">
         <div className="mt-5">
           <a
-            href="https://vercel.com/?utm_source=web3templates&utm_campaign=oss"
+            href="https://mybranches.net"
             target="_blank"
             rel="noopener"
             className="relative block w-44">
             <Image
               src={VercelLogo}
-              alt="Powered by Vercel"
+              alt="Powered by myBranches"
               unoptimized={true}
               width="150"
               height="25"
@@ -55,38 +219,8 @@ export default function Footer(props) {
         </div>
         <ThemeSwitch />
       </div>
-      <Backlink />
     </Container>
+  </footer>
   );
 }
 
-const Backlink = () => {
-  return (
-    <a
-      href="https://web3templates.com/templates/stablo-minimal-blog-website-template"
-      target="_blank"
-      rel="noopener"
-      className="dark:bg-trueGray-900 dark:border-trueGray-700 dark:text-trueGray-300 fixed bottom-5 right-5 flex place-items-center space-x-2 rounded border border-gray-300 bg-white px-3 py-1 font-sans text-sm font-semibold text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 30 30"
-        fill="none"
-        className="h-4 w-4"
-        xmlns="http://www.w3.org/2000/svg">
-        <rect
-          width="30"
-          height="29.5385"
-          rx="2.76923"
-          fill="#362F78"
-        />
-        <path
-          d="M10.14 21.94H12.24L15.44 12.18L18.64 21.94H20.74L24.88 8H22.64L19.58 18.68L16.36 8.78H14.52L11.32 18.68L8.24 8H6L10.14 21.94Z"
-          fill="#F7FAFC"
-        />
-      </svg>
-
-      <span> Purchase Pro ↗</span>
-    </a>
-  );
-};

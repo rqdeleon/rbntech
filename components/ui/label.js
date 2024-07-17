@@ -6,14 +6,17 @@ export default function Label(props) {
     blue: "text-blue-600",
     orange: "text-orange-700",
     purple: "text-purple-600",
-    pink: "text-pink-600"
+    pink: "text-pink-600",
+    gray: "text-gray-500",
+    lime: "text-lime-600",
   };
   const bgcolor = {
     green: "bg-emerald-50",
     blue: "bg-blue-50",
     orange: "bg-orange-50",
     purple: "bg-purple-50",
-    pink: "bg-pink-50"
+    pink: "bg-pink-50",
+    lime: "text-lime-500",
   };
   const margin = props.nomargin;
 
@@ -31,9 +34,9 @@ export default function Label(props) {
   return (
     <span
       className={cx(
-        "inline-block text-xs font-medium tracking-wider uppercase ",
+        "inline-block text-xs font-medium uppercase ",
         !margin && " mt-5",
-        color[props.color] || color[pink]
+        color[props.color] || color.lime
       )}>
       {props.children}
     </span>
