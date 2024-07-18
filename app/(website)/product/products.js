@@ -59,7 +59,7 @@ export default async function Products({ searchParams }) {
           </div>
         :
         <main className="w-3/4 mt-0 lg:mt-10">
-          <div className="grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
+          <div className="grid grid-cols-2 gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
             {products.map(prod => (
               <ProductList key={prod._id} post={prod} aspect="square" />
             ))}

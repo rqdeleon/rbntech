@@ -15,6 +15,10 @@ export async function generateMetadata({ params }) {
   return { title: product.name };
 }
 
+export const dynamic = "force-dynamic";
+
+export const runtime = "edge";
+
 export default async function PostDefault({ params }) {
   const product = await getProductBySlug(params.slug);
 
