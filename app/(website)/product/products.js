@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import ProductList from "@/components/productlist";
-import Pagination from "@/components/blog/pagination";
+import ProductPagination from "@/components/product/pagination";
 import { 
   getCategorizeProducts, 
   getPaginatedProducts, 
@@ -64,7 +64,7 @@ export default async function Products({ searchParams }) {
               <ProductList key={prod._id} post={prod} aspect="square" />
             ))}
           </div>
-          <Pagination
+          <ProductPagination
             pageIndex={pageIndex}
             isFirstPage={isFirstPage}
             isLastPage={isLastPage}
