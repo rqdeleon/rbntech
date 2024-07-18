@@ -33,14 +33,13 @@ export default function Contact({ settings }) {
     height: 450,
     loading: 'lazay',
     referrerpolicy: 'no-referrer-when-downgrade',
-
   }
 
   const { submit: onSubmit } = useWeb3Forms({
     access_key: apiKey,
     settings: {
       from_name: "RBNTECH Contact Form",
-      subject: "New Contact Message from Stablo Website"
+      subject: "New client want to reach out!"
     },
     onSuccess: (msg, data) => {
       setIsSuccess(true);
@@ -180,7 +179,7 @@ export default function Contact({ settings }) {
 
             <button
               type="submit"
-              className="w-full py-4 font-semibold text-white transition-colors bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7 dark:bg-white dark:text-black ">
+              className="w-full py-4 font-semibold text-white transition-colors bg-lime-700 hover:bg-lime-600 rounded-md focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7 dark:bg-white dark:text-black ">
               {isSubmitting ? (
                 <svg
                   className="w-5 h-5 mx-auto text-white dark:text-black animate-spin"

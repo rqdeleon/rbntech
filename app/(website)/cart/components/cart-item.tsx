@@ -9,8 +9,6 @@ import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
 import { Button } from "@/components/ui/button";
 
-
-
 interface CartItemProps {
   data: Product;
 }

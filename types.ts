@@ -10,6 +10,9 @@ export interface Product{
   name:string;
   price: string;
   productCategory?: string[];
-  brand?: string[];
+  brand?: [{
+    name: string,
+    slug: []
+  }];
   quantity: number;
 }

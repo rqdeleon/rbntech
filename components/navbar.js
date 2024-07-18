@@ -48,7 +48,7 @@ export default function Navbar(props) {
   const mobilemenu = [...leftmenu, ...rightmenu];
   const isDesktop = useMediaQuery("(min-width:1025px)")
   return (
-  <header className="sticky top-0 z-10 bg-cyan-900 text-slate-50 w-full">
+  <header className="sticky top-0 z-20 bg-cyan-900 text-slate-50 w-full">
     <Container>
       <nav>
         <Disclosure>

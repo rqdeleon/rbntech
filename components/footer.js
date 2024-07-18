@@ -130,7 +130,6 @@ export default function Footer(props) {
                 </ul>
               </Disclosure.Panel>
             </Disclosure>
-          
           }
         </div>
           
@@ -189,7 +188,6 @@ export default function Footer(props) {
             )}
           </ul>
         </div>
-
       </section>
     </Container>
     <Container className="mt-10 border-t border-gray-100/40 dark:border-gray-800">

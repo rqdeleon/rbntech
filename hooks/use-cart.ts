@@ -67,7 +67,7 @@ const UseCart = create(
             if(existingItem && existingItem.quantity >= 1){
 
                 currentItems.map((item)=>(
-                    item._id === id ? item.quantity = item.quantity  + 1 : item
+                    item._id === id ? item.quantity = Number(item.quantity) + 1 : item
                 ));
 
                 set({items:[...currentItems]}) 
