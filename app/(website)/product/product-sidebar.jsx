@@ -25,6 +25,13 @@ export const ProductSidebar = ({categories, brands}) => {
         </h3>
         <Separator />
         <ul className='py-5'>
+            <li className='cursor-pointer text-xl font-medium hover:text-blue-500'>
+              <Link                
+                href={`/product`}
+              >
+                All Product
+              </Link>
+            </li>
           {categories.map((cat)=>(
             <li 
               key={cat.slug.current} 
