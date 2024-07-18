@@ -186,7 +186,6 @@ const Summary = ({ settings }) => {
       </CardContent>
     </Card>
     </div>
-    
   );
 }
  
