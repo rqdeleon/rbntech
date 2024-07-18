@@ -2,7 +2,6 @@ import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
-import BrandSlidder from "@/components/sections/brandSlidder";
 
 async function sharedMetaData(params) {
   const settings = await getSettings();
@@ -27,7 +26,7 @@ async function sharedMetaData(params) {
         {
           url:
             urlForImage(settings?.openGraphImage)?.src ||
-            "/img/opengraph.jpg",
+            "/img/opengraph.png",
           width: 800,
           height: 600
         }
