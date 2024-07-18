@@ -42,7 +42,7 @@ export default function BannerCarousel(){
               <CarouselContent>
                 {projectData.map((project) => (
                   <CarouselItem key={project.image} className="flex items-center justify-center">
-                    <article className="relative w-full h-[550px] md:h-[750px] overflow-hidden" >
+                    <article className="relative w-full h-[300px] md:h-[550px] lg:h-screen overflow-hidden" >
                       <div className="relative w-full h-full overflow-hidden z-0 cursor-pointer ">
                         <Image
                           src={project.image}

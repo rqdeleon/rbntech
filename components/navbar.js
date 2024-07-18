@@ -13,6 +13,8 @@ import Container from "@/components/container";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { myLoader } from "@/utils/all";
 import CartAction from "@/components/ui/cart-action";
+import { Button } from "./ui/button";
+import { Phone } from "lucide-react";
 
 export default function Navbar(props) {
   const leftmenu = [
@@ -42,6 +44,7 @@ export default function Navbar(props) {
       label: "Catalog",
       href: "/catalog"
     },
+    
 
   ];
 
@@ -98,7 +101,7 @@ export default function Navbar(props) {
                       </h3>
                     )}
                   </Link>
-                  {isDesktop? " ": <div className="ml-auto lg:hidden"><CartAction /></div>}
+                  {isDesktop? " ": <div className="flex gap-3 ml-auto lg:hidden"><a href={`tel:${props.phone}`} className="flex gap-3 mx-3"><Phone className="w-5 h-5"/>{props.phone}</a><CartAction /></div>}
                   <Disclosure.Button
                     aria-label="Toggle Menu"
                     className="ml-2 rounded-md px-2 py-1 text-gray-50 hover:text-blue-500 focus:text-blue-500 focus:outline-none dark:text-gray-300 lg:hidden ">
@@ -157,6 +160,7 @@ export default function Navbar(props) {
                       )}
                     </Fragment>
                   ))}
+                  <a href={`tel:${props.phone}`} className="flex gap-3 mx-3"><Phone className="w-5 h-5"/>{props.phone}</a>
                   <CartAction />
                 </div>
               </div>

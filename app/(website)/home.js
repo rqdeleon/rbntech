@@ -13,7 +13,7 @@ export default function Post({ posts, products }) {
     <>
       <BannerCarousel />
         <Container props={{large:true}}>
-          <div className="grid gap-10 md:grid-cols-4 lg:gap-10 ">
+          <div className="grid gap-10 grid-cols-2 md:grid-cols-4 lg:gap-10 ">
             {products.map(prod => (
               <ProductList
                 key={prod._id}
