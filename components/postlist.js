@@ -24,7 +24,7 @@ export default function PostList({
       <div
         className={cx(
           "group cursor-pointer",
-          minimal && "grid gap-10 md:grid-cols-2"
+          minimal && "grid gap-10 grid-cols-2"
         )}>
         <div
           className={cx(
@@ -69,12 +69,12 @@ export default function PostList({
               categories={post.categories}
               nomargin={minimal}
             />
-            <h2
+            <h3
               className={cx(
                 fontSize === "large"
                   ? "text-2xl"
                   : minimal
-                  ? "text-3xl"
+                  ? "text-md"
                   : "text-lg",
                 fontWeight === "normal"
                   ? "line-clamp-2 font-medium  tracking-normal text-black"
@@ -96,7 +96,7 @@ export default function PostList({
                   {post.title}
                 </span>
               </Link>
-            </h2>
+            </h3>
 
             <div className="hidden">
               {post.excerpt && (
