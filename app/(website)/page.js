@@ -1,6 +1,6 @@
 import HomePage from "./home";
 import { getAllPosts, getFeaturedProducts } from "@/lib/sanity/client";
-import BrandSlidder from "@/components/sections/brandSlidder";
+import BannerCarousel from "@/components/sections/banner-carousel";
 
 export default async function IndexPage() {
   
@@ -14,8 +14,8 @@ export default async function IndexPage() {
   const products = await getFeaturedProducts(params);
   return (
     <>
+      <BannerCarousel />
       <HomePage posts={posts} products={products} />
-      <BrandSlidder />
     </>
   )
 

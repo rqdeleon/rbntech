@@ -75,7 +75,7 @@ const Summary = ({ settings }) => {
     onSuccess: (msg, data) => {
       toast.success(msg);
       reset();
-      // cart.removeAll();
+      cart.removeAll();
     },
     onError: (msg, data) => {
       toast.error(msg);
@@ -120,11 +120,40 @@ const Summary = ({ settings }) => {
 
         <div className="mt-10 border-t border-gray-200 pt-5">
           <form onSubmit={handleSubmit(onCheckout)}>
+
             <input {...register("oder", { 
-              value: `${items.map((item)=>(
-                      `brand: ${item.brand ? item.brand[0].name : "no-brand"} item: ${item.name} x ${item.quantity} =  ${ priceQty({price: item.price, qty: item.quantity}) }\n`
+              value: `${
+                        items.map((item)=>(
+                        `brand: ${item.brand ? item.brand[0].name : "no-brand"} 
+                        item: ${item.name} x ${item.quantity} 
+                        =  ${ priceQty({price: item.price, qty: item.quantity}) }`
                     ))}` 
             })} type="hidden" />
+            
+            <div className="mb-5">
+              <input
+                type="text"
+                placeholder="Full Name or Company Name"
+                autoComplete="yes"
+                disabled={items.length === 0}
+                className={`w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white rounded-md outline-none dark:placeholder:text-gray-200 dark:bg-gray-900   focus:ring-4  ${
+                  errors.name
+                    ? "border-red-600 focus:border-red-600 ring-red-100 dark:ring-0"
+                    : "border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
+                }`}
+                {...register("name", {
+                  required: "name or company is required",
+                  maxLength: 80
+                })}
+              />
+              {errors.name && (
+                <div className="mt-1 text-red-600">
+                  <small>{errors.name.message}</small>
+                </div>
+              )}
+            </div>  
+      
+
             <div className="mb-5">
               <label htmlFor="email_address" className="sr-only">
                 Email Address
@@ -133,7 +162,7 @@ const Summary = ({ settings }) => {
                 id="email_address"
                 type="email"
                 placeholder="Email Address"
-                autoComplete="false"
+                autoComplete="yes"
                 disabled={items.length === 0}
                 className={`w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white rounded-md outline-none dark:placeholder:text-gray-200 dark:bg-gray-900   focus:ring-4  ${
                   errors.email
@@ -157,23 +186,23 @@ const Summary = ({ settings }) => {
 
             <div className="mb-5">
               <input
-                type="text"
+                type="number"
                 placeholder="Phone number"
-                autoComplete="false"
+                autoComplete="yes"
                 disabled={items.length === 0}
                 className={`w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white rounded-md outline-none dark:placeholder:text-gray-200 dark:bg-gray-900   focus:ring-4  ${
-                  errors.name
+                  errors.phone
                     ? "border-red-600 focus:border-red-600 ring-red-100 dark:ring-0"
                     : "border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
                 }`}
                 {...register("phone", {
                   required: "Phone number is required",
-                  maxLength: 80
+                  maxLength: 12
                 })}
               />
-              {errors.name && (
+              {errors.phone && (
                 <div className="mt-1 text-red-600">
-                  <small>{errors.name.message}</small>
+                  <small>{errors.phone.message}</small>
                 </div>
               )}
             </div>  

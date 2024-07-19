@@ -13,7 +13,6 @@ import Container from "@/components/container";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { myLoader } from "@/utils/all";
 import CartAction from "@/components/ui/cart-action";
-import { Button } from "./ui/button";
 import { Phone } from "lucide-react";
 
 export default function Navbar(props) {
@@ -38,14 +37,7 @@ export default function Navbar(props) {
     {
       label: "Contact",
       href: "/contact"
-    },
-
-    {
-      label: "Catalog",
-      href: "/catalog"
-    },
-    
-
+    },   
   ];
 
   const mobilemenu = [...leftmenu, ...rightmenu];
@@ -187,7 +179,9 @@ export default function Navbar(props) {
                       )}
                     </Fragment>
                   ))}
-                  <a href={`tel:${props.phone}`} className="flex gap-3 mx-3"><Phone className="w-5 h-5"/>{props.phone}</a>
+                  <Fragment>
+                   <a href={`tel:${props.phone}`} className="flex gap-3 mx-3 w-full px-5 py-2 text-sm font-medium text-gray-50 hover:text-blue-500"><Phone className="w-5 h-5"/>{props.phone}</a>
+                  </Fragment>
                 </div>
               </Disclosure.Panel>
             </>

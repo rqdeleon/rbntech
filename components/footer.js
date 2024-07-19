@@ -12,7 +12,7 @@ import { urlForImage } from "@/lib/sanity/image";
 
 
 export default function Footer(props) {
-  const isDesktop = useMediaQuery("(min-width:1025px)");
+  const isDesktop = useMediaQuery("(min-width:1280px)");
   const quicklinks = [
     {
       href: '/product',
@@ -49,21 +49,39 @@ export default function Footer(props) {
       label: 'Refund Policy',
     },
   ]
+
+  const socialmedias = [
+    {
+      name: 'facebook',
+      href: 'https://www.facebook.com/rbntechtrading/',
+      icon: '/img/socials/facebook.svg',
+    },
+    {
+      name: 'viber',
+      href: `viber://contact?number=${props.phone}`,
+      icon: '/img/socials/viber.svg',
+    },
+    {
+      name: 'messenger',
+      href: 'https://m.me/rbntechtrading',
+      icon: '/img/socials/messenger.svg',
+    },
+  ]
   return (
   <footer className="bg-cyan-900 text-slate-100 pt-10">
     <Container>
-      <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 text-xl">
-        <div className="flex flex-col gap-y-5 lg:gap-y-10">
+      <section className="grid grid-cols-1 gap-5 xl:grid-cols-5 text-xl">
+        <div className="xl:col-span-2 flex flex-col gap-y-5 lg:gap-y-7">
           {props.logo ? (
             <div className="flex gap-2 items-center justify-center lg:justify-normal w-full">
-              <div className="relative w-24">
+              <div className="relative w-20">
                 <Image
                   {...urlForImage(props.logo)}
                   alt="Logo"
                   priority={true}
                 />
               </div>
-              <h3 className="block uppercase text-center text-2xl font-bold">
+              <h3 className="block uppercase text-center text-4xl font-bold">
                 {props.title}
               </h3>
             </div>
@@ -73,14 +91,14 @@ export default function Footer(props) {
             </h3>
           )}
           <div className="flex gap-3">
-            <Map className="min-w-8 w-8 h-8" />
+            <Map className="flex-none min-w-8 w-8 h-8" />
             <p className="flex-1">
-              no. 3 8th St. Phase 1A, Pacita Complex 1, <br/>San Vicente 4023, San Pedro City, Philippines
+              no. 3 8th St. Phase 1A, Pacita Complex 1, San Vicente 4023, San Pedro City, Philippines
             </p>
           </div>
 
           <div className="flex gap-3">
-            <PhoneIcon className="min-w-7 w-7 h-7" />
+            <PhoneIcon className="flex-none w-7 h-7" />
             <Link href={`viber://contact?number=${props.phone}`}>
               {props.phone}
             </Link>
@@ -92,9 +110,16 @@ export default function Footer(props) {
               {props.email}
             </Link>
           </div>
+
+          <div className="flex gap-3 text-md">
+            <MailIcon className="min-w-7 w-7 h-7" />
+            <Link href={`mailto:sales.rbntech@gmail.com`}>
+              sales.rbntech@gmail.com
+            </Link>
+          </div>
         </div>
 
-        <div className="mt-5 lg:mt-0 lg:px-10">
+        <div className="mt-5 lg:mt-0 ">
           {isDesktop ? 
             <>
               <h3 className="block text-center text-2xl font-bold">
@@ -133,7 +158,7 @@ export default function Footer(props) {
           }
         </div>
           
-        <div className="mt-5 lg:mt-0 lg:px-10">
+        <div className="mt-5 lg:mt-0">
             { isDesktop ?
               <>
                 <h3 className="block text-center text-2xl font-bold">
@@ -170,18 +195,21 @@ export default function Footer(props) {
               }
         </div>
 
-        <div className="lg:flex lg:gap-4 lg:mt-5">
+        <div>
           <h3 className="text-center lg:text-start text-2xl font-bold">
             Get in Touch:
           </h3> 
-          <ul className="mt-12 flex flex-col gap-y-4 lg:mt-0">
-            { props.social.map(
+          <ul className="mt-7 flex gap-4 lg:mt-12">
+            { socialmedias.map(
               (sm)=>(
-              <li key={sm.url}>
-                <Link href={sm.url} target="blank">
-                  { 
-                    sm.media == "facebook" ? <Facebook /> : sm.medial
-                  }
+              <li key={sm.name}>
+                <Link href={sm.href} target="blank">
+                  <Image 
+                    src={sm.icon}
+                    width={50}
+                    height={50}
+                    alt={sm.name} 
+                    className="w-12 h-12 flex-none"/>
                 </Link>
               </li>
             )

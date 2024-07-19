@@ -9,13 +9,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
-interface Props {
-
-}
-
-export const MainBreadcrumb = () => {
+export const MainBreadcrumb = ({props}) => {
   return (
-    <div>
+    <div className='my-5 text-lg'>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -26,6 +22,9 @@ export const MainBreadcrumb = () => {
             <BreadcrumbLink href="/product">Products</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{props.slug}</BreadcrumbPage>
+          </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
     </div>

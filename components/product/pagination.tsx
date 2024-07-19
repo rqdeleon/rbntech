@@ -8,7 +8,7 @@ import {
   ChevronRightIcon
 } from "@heroicons/react/24/outline";
 
-export default function Pagination({
+export default function ProductPagination({
   pageIndex,
   isFirstPage,
   isLastPage

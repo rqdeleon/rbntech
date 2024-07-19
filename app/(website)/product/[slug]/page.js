@@ -24,9 +24,8 @@ export default async function PostDefault({ params }) {
 
   return(  
     <Container>
-      <MainBreadcrumb />
+      <MainBreadcrumb props={{ slug: params.slug }} />
       <Product product={product} />
-
       <Heading title="Related Products" description=" " className="my-10"/>
       <div className="grid gap-10 grid-cols-2 lg:gap-10 md:grid-cols-4">
         {product.related.map(prod => (

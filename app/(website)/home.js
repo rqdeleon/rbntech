@@ -2,7 +2,6 @@ import Link from "next/link";
 import Container from "@/components/container";
 import PostList from "@/components/postlist";
 import ProductList from "@/components/productlist";
-import BannerCarousel from "@/components/sections/banner-carousel";
 import CategoryBanner from "@/components/sections/category-banner";
 import Testimony from "@/components/sections/testimonials";
 import { Heading } from "@/components/heading";
@@ -11,7 +10,6 @@ import { Heading } from "@/components/heading";
 export default function Post({ posts, products }) {
   return (
     <>
-      <BannerCarousel />
         <Container props={{large:true}}>
           <div className="grid gap-10 grid-cols-2 md:grid-cols-4 lg:gap-10 ">
             {products.map(prod => (

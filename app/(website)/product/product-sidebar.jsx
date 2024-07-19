@@ -24,8 +24,8 @@ export const ProductSidebar = ({categories, brands}) => {
           Categories
         </h3>
         <Separator />
-        <ul className='py-5'>
-            <li className='cursor-pointer text-xl font-medium hover:text-blue-500'>
+        <ul className='flex flex-col gap-3 pl-3 py-5 text-xl font-medium'>
+            <li className='cursor-pointer  hover:text-blue-500'>
               <Link                
                 href={`/product`}
               >
@@ -35,7 +35,7 @@ export const ProductSidebar = ({categories, brands}) => {
           {categories.map((cat)=>(
             <li 
               key={cat.slug.current} 
-              className='cursor-pointer text-xl font-medium hover:text-blue-500'>
+              className='cursor-pointer hover:text-blue-500'>
               <Link                
                 href={`/product?cat=${cat.slug.current}`}
               >
@@ -51,7 +51,7 @@ export const ProductSidebar = ({categories, brands}) => {
           Brands
         </h3>
         <Separator />
-        <ul className="mt-4">
+        <ul className="mt-4 flex flex-col gap-3 pl-3">
           {brands.map((brand)=>(
               <li 
                 key={brand.slug.current} 
@@ -90,7 +90,7 @@ const MobileSheet = ({categories, brands})=>{
               Categories
             </h3>
             <Separator />
-            <ul>
+            <ul className='flex flex-col gap-3 text-md pl-3 pt-3'>
               {categories.map((cat)=>(
                 <li 
                   key={cat.slug.current} 
@@ -110,7 +110,7 @@ const MobileSheet = ({categories, brands})=>{
               Brands
             </h3>
             <Separator />
-            <ul className="mt-4">
+            <ul className="mt-4 flex flex-col gap-3 text-md pl-3 pt-3">
               {brands.map((brand)=>(
                 <li 
                 key={brand.slug.current} 

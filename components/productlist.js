@@ -96,11 +96,11 @@ export default function ProductList({
                 </span>
               </Link>
             </h3>
-            <div className="my-2">
+            {/* <div className="my-2">
               <span className="font-bold">
                 {formatter.format(post.price)}
               </span>
-            </div>
+            </div> */}
             <div className="flex">
               {post.excerpt && (
                 <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
