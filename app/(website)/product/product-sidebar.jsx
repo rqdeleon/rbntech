@@ -11,6 +11,7 @@ import {
   SheetClose,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 export const ProductSidebar = ({categories, brands}) => {
   const isDesktop = useMediaQuery("(min-width:1025px)");
@@ -84,6 +85,7 @@ const MobileSheet = ({categories, brands})=>{
         </div>
       </SheetTrigger>
       <SheetContent side="left">
+      <ScrollArea className="h-screen w-full">
           <aside>
           <div>
             <h3 className='text-2xl font-bold uppercase'>
@@ -125,6 +127,7 @@ const MobileSheet = ({categories, brands})=>{
             </ul>
           </div>
         </aside>
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   )
