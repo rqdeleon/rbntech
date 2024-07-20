@@ -7,7 +7,7 @@ export default async function IndexPage() {
   // Define the parameters for fetching posts based on the current page
   const params = {
     pageIndex:0,
-    limit: 6,
+    limit: 8,
   };
   
   const posts = await getAllPosts();
@@ -21,4 +21,4 @@ export default async function IndexPage() {
 
 }
 
-// export const revalidate = 60;
+export const revalidate = 600;

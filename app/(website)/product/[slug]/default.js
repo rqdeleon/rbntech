@@ -94,7 +94,7 @@ export default function Product(props) {
                 onChange={ e=> setQty(e.target.value)}                
               />
             </div>
-            <Button onClick={onAddToCart} className="bg-lime-600 hover:bg-lime-500 w-3/4 mt-9">Order Now</Button>
+            <Button onClick={onAddToCart} className="bg-lime-600 hover:bg-lime-500 w-3/4 mt-9">Add to cart</Button>
           </div>
         </article>
       </Container>

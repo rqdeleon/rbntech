@@ -87,18 +87,18 @@ export default function PostList({
                 }`}>
                 <span
                   className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
-      bg-no-repeat
-      transition-[background-size]
-      duration-500
-      hover:bg-[length:100%_3px]
-      group-hover:bg-[length:100%_10px]
-      dark:from-purple-800 dark:to-purple-900">
+                    bg-no-repeat
+                    transition-[background-size]
+                    duration-500
+                    hover:bg-[length:100%_3px]
+                    group-hover:bg-[length:100%_10px]
+                    dark:from-purple-800 dark:to-purple-900">
                   {post.title}
                 </span>
               </Link>
             </h3>
 
-            <div className="hidden">
+            <div>
               {post.excerpt && (
                 <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
                   <Link

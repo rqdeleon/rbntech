@@ -30,16 +30,16 @@ export default function Post({ posts, products }) {
         {posts && (
           <Container props={{large:true}}>
             <Heading title="Stay Updated" description="Read news and blogs coming from our team" link="/blog"/>
-            <div className="mt-10 grid grid-cols-2 gap-10 md:grid-cols-2 lg:gap-10 ">
-              <div>
+            <div className="mt-10 grid gap-10 lg:grid-cols-3 lg:gap-10 ">
+              <div className="md:col-span-2">
               {posts.slice(0, 1).map(post => (
-                  <PostList key={post._id} post={post} aspect="square" />
+                  <PostList key={post._id} post={post} aspect="landscape" />
                 ))}
               </div>
-              <div className="grid gap-4">
-              {posts.slice(1, 4).map(post => (
-                  <PostList key={post._id} post={post}  minimal={true} />
-                ))}
+              <div >
+                {posts.slice(1, 4).map(post => (
+                    <PostList key={post._id} post={post}  minimal={true} />
+                  ))}
               </div>
             </div>
         </Container>
