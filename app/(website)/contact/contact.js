@@ -62,22 +62,17 @@ export default function Contact({ settings }) {
       </div>
 
       <div className="grid my-10 md:grid-cols-2">
-        <div className="my-10">
+        <div className="my-10 lg:ml-auto lg:mr-24">
           <h2 className="text-2xl font-semibold dark:text-white uppercase">
             Contact {settings.title} support
           </h2>
-          <p className="max-w-sm mt-5">
+          <p className="max-w-md mt-5">
             We&#x2018;d love to hear from you! Whether you have a question about our products, need assistance, or want to give feedback, our team is here to help.
           </p>
-
           <div className="mt-5">
-            <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-              <MapPinIcon className="flex-none w-4 h-4" />
-              <span className="flex-1">{settings.address}</span>
-            </div>
             {settings?.email && (
               <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-                <EnvelopeIcon className="w-4 h-4" />
+                <EnvelopeIcon className="flex-none w-5 h-5" />
                 <a href={`mailto:${settings.email}`}>
                   {settings.email}
                 </a>
@@ -85,13 +80,18 @@ export default function Contact({ settings }) {
             )}
             {settings?.phone && (
               <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-                <PhoneIcon className="w-4 h-4" />
+                <PhoneIcon className="flex-none w-5 h-5" />
                 <a href={`tel:${settings.phone}`}>{settings.phone}</a>
               </div>
             )}
               <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-                <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5" />
+                <ChatBubbleOvalLeftEllipsisIcon className="flex-none w-5 h-5" />
                 <a href="https://m.me/rbntechtrading">Messager</a>
+              </div>
+
+              <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
+                <MapPinIcon className="flex-none w-5 h-5" />
+                <span className="flex-1 max-w-md">{settings.address}</span>
               </div>
           </div>
         </div>

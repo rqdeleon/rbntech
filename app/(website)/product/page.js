@@ -18,7 +18,7 @@ export async function generateMetadata(){
   const categories = await getAllProductCategory();
   
   return {
-    title: 'All Products | RBNTECH',
+    title: 'All Products',
     description: categories.map(cat=> cat.name)
   }
 }

@@ -19,13 +19,13 @@ export const ProductSidebar = ({categories, brands}) => {
   return (
     <>
     { isDesktop ? 
-    <aside className='min-w-48 mr-7'>
+    <aside className='min-w-52 mr-7 space-y-7'>
       <div>
-        <h3 className='text-2xl font-bold uppercase'>
+        <h3 className='text-md tracking-wider font-bold uppercase'>
           Categories
         </h3>
         <Separator />
-        <ul className='flex flex-col gap-3 pl-3 py-5 text-xl font-medium'>
+        <ul className='flex flex-col gap-4 pl-3 py-5 text-xl font-medium'>
             <li className='cursor-pointer  hover:text-blue-500'>
               <Link                
                 href={`/product`}
@@ -48,15 +48,15 @@ export const ProductSidebar = ({categories, brands}) => {
       </div>
 
       <div>
-        <h3 className='text-2xl font-bold uppercase'>
+        <h3 className='text-md tracking-wider font-bold uppercase'>
           Brands
         </h3>
         <Separator />
-        <ul className="mt-4 flex flex-col gap-3 pl-3">
+        <ul className="mt-4 flex flex-col gap-4 pl-3 text-xl">
           {brands.map((brand)=>(
               <li 
                 key={brand.slug.current} 
-                className='cursor-pointer text-xl font-medium hover:text-blue-500'>
+                className='cursor-pointer font-medium hover:text-blue-500'>
                 <Link                
                   href={`/product?brand=${brand.slug.current}`}
                 >
@@ -75,7 +75,6 @@ export const ProductSidebar = ({categories, brands}) => {
 }
 
 const MobileSheet = ({categories, brands})=>{
-  const [brandValues, setBrandValues ] = React.useState([]);
   return(
     <Sheet>
       <SheetTrigger>
@@ -85,48 +84,53 @@ const MobileSheet = ({categories, brands})=>{
         </div>
       </SheetTrigger>
       <SheetContent side="left">
-      <ScrollArea className="h-screen w-full">
+        <ScrollArea className="h-screen w-full pb-24">
           <aside>
-          <div>
-            <h3 className='text-2xl font-bold uppercase'>
-              Categories
-            </h3>
-            <Separator />
-            <ul className='flex flex-col gap-3 text-md pl-3 pt-3'>
-              {categories.map((cat)=>(
-                <li 
-                  key={cat.slug.current} 
-                  className='cursor-pointer text-xl font-medium hover:text-blue-500'>
-                  <Link                
-                    href={`/product?cat=${cat.slug.current}`}
-                  >
-                    <SheetClose>{cat.name}</SheetClose>
+            <div>
+              <h3 className='text-lg uppercase'>
+                Categories
+              </h3>
+              <Separator />
+              <ul className='flex flex-col gap-3 text-md pl-3 pt-3 '>
+                <li className='cursor-pointer hover:text-blue-500'>
+                  <Link href={`/product`} >
+                    <SheetClose>All Product</SheetClose>
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
+                {categories.map((cat)=>(
+                  <li 
+                    key={cat.slug.current} 
+                    className='cursor-pointer  hover:text-blue-500'>
+                    <Link                
+                      href={`/product?cat=${cat.slug.current}`}
+                    >
+                      <SheetClose>{cat.name}</SheetClose>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className='mt-10'>
-            <h3 className='text-2xl font-bold uppercase'>
-              Brands
-            </h3>
-            <Separator />
-            <ul className="mt-4 flex flex-col gap-3 text-md pl-3 pt-3">
-              {brands.map((brand)=>(
-                <li 
-                key={brand.slug.current} 
-                className='cursor-pointer text-xl font-medium hover:text-blue-500'>
-                  <Link                
-                    href={`/product?brand=${brand.slug.current}`}
-                  >
-                    <SheetClose>{brand.name}</SheetClose>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
+            <div className='mt-10'>
+              <h3 className='text-lg uppercase'>
+                Brands
+              </h3>
+              <Separator />
+              <ul className="mt-4 flex flex-col gap-3 text-md pl-3 pt-3">
+                {brands.map((brand)=>(
+                  <li 
+                  key={brand.slug.current} 
+                  className='cursor-pointer hover:text-blue-500'>
+                    <Link                
+                      href={`/product?brand=${brand.slug.current}`}
+                    >
+                      <SheetClose>{brand.name}</SheetClose>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
         </ScrollArea>
       </SheetContent>
     </Sheet>
