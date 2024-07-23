@@ -43,7 +43,7 @@ const CategoryBanner = () => {
     <section>
       <div className="text-center mt-20">
         <Heading title="Categories" description="Search products by categories" className="mb-10 justify-center" />
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {categories.map((cat)=>(
             <li 
               key={`${cat.img}`} 

@@ -18,7 +18,6 @@ export default async function IndexPage() {
       <HomePage posts={posts} products={products} />
     </>
   )
-
 }
 
 export const revalidate = 600;

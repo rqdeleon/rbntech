@@ -56,11 +56,10 @@ export default function Navbar(props) {
                       <div className="flex gap-2 items-center">
                         <Image
                           {...urlForImage(props.logoalt)}
-                          width={50}
-                          height={50}
+                          width={45}
+                          height={45}
                           alt="Logo"
                           priority={true}
-                          sizes="(max-width: 640px) 100vw, 200px"
                         />
                         <h2 className="block text-center text-2xl font-bold">
                           RBNTECH
@@ -78,10 +77,9 @@ export default function Navbar(props) {
                         <Image
                           {...urlForImage(props.logoalt)}
                           alt="Logo"
-                          width={50}
-                          height={50}
+                          width={45}
+                          height={45}
                           priority={true}
-                          sizes="(max-width: 640px) 100vw, 200px"
                         />
                         <h3 className="block text-center text-2xl font-bold">
                           RBNTECH
@@ -119,11 +117,11 @@ export default function Navbar(props) {
                 </div> 
                 <div className="w-full flex-col items-center mt-4 justify-start lg:order-none lg:mt-0 lg:flex lg:w-auto lg:flex-auto lg:flex-row lg:justify-end">
                   <div className="w-full flex-1">
-                      <div className="relative text-gray-400">
-                        <form action="/product" method="GET" className="mt-4">
-                          <SearchInput placeholder="Search Product" />
-                        </form>
-                      </div>
+                    <div className="relative text-gray-400">
+                      <form action="/product" method="GET" className="mt-4">
+                        <SearchInput placeholder="Search Product" />
+                      </form>
+                    </div>
                   </div>
                 </div>
                 <div className="order-2 hidden w-full flex-col items-center justify-start lg:order-none lg:flex lg:w-auto lg:flex-1 lg:flex-row">

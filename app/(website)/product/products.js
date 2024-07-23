@@ -25,6 +25,7 @@ export default async function Products({ searchParams }) {
     pageIndex: (pageIndex - 1) * POSTS_PER_PAGE,
     limit: pageIndex * POSTS_PER_PAGE,
   }
+  
   let products = []
 
     if(searchParams.cat){ 
@@ -71,7 +72,7 @@ export default async function Products({ searchParams }) {
           />
         </main>
         }
-        </div>
+      </div>
     </div>
   );
 }

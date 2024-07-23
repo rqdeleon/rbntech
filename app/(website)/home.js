@@ -10,9 +10,9 @@ import { Heading } from "@/components/heading";
 export default function Post({ posts, products }) {
   return (
     <>
-        <Container props={{large:true}}>
+      <Container props={{large:true}} > 
         <Heading title="Featured Products" className="pb-10" link="/product"/>
-          <div className="grid gap-10 grid-cols-2 md:grid-cols-4 lg:gap-10 ">
+          <div className="grid gap-10 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 lg:gap-10 ">
             {products.map(prod => (
               <ProductList
                 key={prod._id}
@@ -22,6 +22,7 @@ export default function Post({ posts, products }) {
               />
             ))}
           </div>
+
           <CategoryBanner />
         </Container>
 
