@@ -9,34 +9,13 @@ import {
   getProductsByBrand,
 } from "@/lib/sanity/client";
 
-export default async function Products({ searchParams }) {
+export default async function Products({ searchParams, products }) {
   // Fetch the current page from the query parameters, defaulting to 1 if it doesn't exist
   const page = searchParams.page;
   const pageIndex = parseInt(page, 10) || 1;
-  const searchCategory = { category: searchParams.cat}
-  const searchQuery = { search: searchParams.sq }
-  const searchBrandQuery = { slug: searchParams.brand }
 
   // Set the number of posts to be displayed per page
-  const POSTS_PER_PAGE = 6;
-
-  // Define the parameters for fetching posts based on the current page
-  const params = {
-    pageIndex: (pageIndex - 1) * POSTS_PER_PAGE,
-    limit: pageIndex * POSTS_PER_PAGE,
-  }
-  
-  let products = []
-
-    if(searchParams.cat){ 
-      products =  await getCategorizeProducts({...params, ...searchCategory})
-    }else if(searchParams.sq){
-      products = await getSearchProducts({...params, ...searchQuery})
-    }else if(searchParams.brand){
-      products = await getProductsByBrand({...params, ...searchBrandQuery})
-    }else{ 
-      products =  await getPaginatedProducts(params)
-    }
+  const POSTS_PER_PAGE = 6;  
 
   // Check if the current page is the first or the last
   const isFirstPage = pageIndex < 2;
@@ -48,7 +27,7 @@ export default async function Products({ searchParams }) {
         { products && products?.length === 0 ?
           <div className="flex flex-col w-full items-center justify-center py-12">
             <span className="text-2xl text-gray-500">
-              Search a product by name, category or brands
+              Search a product by name, categories or brands
             </span>
               <Image 
                 src="/img/404/searchmore.png"

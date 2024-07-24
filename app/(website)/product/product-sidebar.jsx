@@ -25,7 +25,7 @@ export const ProductSidebar = ({categories, brands}) => {
           Categories
         </h3>
         <Separator />
-        <ul className='flex flex-col gap-4 pl-3 py-5 text-xl font-medium'>
+        <ul className='flex flex-col gap-4 pl-3 py-7 text-sm uppercase tracking-tight font-semibold'>
             <li className='cursor-pointer  hover:text-blue-500'>
               <Link                
                 href={`/product`}
@@ -52,11 +52,11 @@ export const ProductSidebar = ({categories, brands}) => {
           Brands
         </h3>
         <Separator />
-        <ul className="mt-4 flex flex-col gap-4 pl-3 text-xl">
+        <ul className="flex flex-col gap-4 pl-3 py-7 text-sm uppercase tracking-tight font-semibold">
           {brands.map((brand)=>(
               <li 
                 key={brand.slug.current} 
-                className='cursor-pointer font-medium hover:text-blue-500'>
+                className='cursor-pointer hover:text-blue-500'>
                 <Link                
                   href={`/product?brand=${brand.slug.current}`}
                 >
