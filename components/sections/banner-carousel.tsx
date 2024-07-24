@@ -11,18 +11,16 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-
-
 export default function BannerCarousel(){
   
   const projectData = [
     {
-      description:'Help to raise valuable donations for Kids',
+      description:'empowering industries with quality products',
       image: '/img/banners/banner1.png',
       link:'#',
     },
     {
-      description:'Help to raise valuable donations for Kids',
+      description:'we have you covered',
       image: '/img/banners/banner2.png',
       link:'#',
     },
@@ -42,13 +40,13 @@ export default function BannerCarousel(){
               <CarouselContent>
                 {projectData.map((project) => (
                   <CarouselItem key={project.image} className="flex items-center justify-center">
-                    <article className="relative w-full h-[300px] md:h-[550px] lg:h-screen overflow-hidden" >
-                      <div className="relative w-full h-full overflow-hidden z-0 cursor-pointer ">
+                    <article className="w-full" >
+                      <div className="relative bg-cyan-900 mx-auto min-h-[345px] md:min-h-[450px] lg:min-h-[695px] overflow-hidden z-0 ">
                         <Image
                           src={project.image}
-                          alt="profile image"
+                          alt={project.description}
                           fill
-                          className="object-cover transition delay-300 duration-500"
+                          className="object-cover transition delay-300 duration-500 2xl:object-contain"
                         />
                       </div>
                     </article>
