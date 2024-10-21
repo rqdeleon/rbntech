@@ -9,14 +9,14 @@ const CategoryBanner = () => {
   
   const categories = [
     {
-      title: 'Power Tools',
-      link: 'power-tools',
-      img: '/img/category/powertool.jpg',
+      title: 'Electrical',
+      link: 'electrical',
+      img: '/img/category/electrical.jpg',
     },
     {
-      title: 'Office Interior',
-      link: 'office',
-      img: '/img/category/office.jpg',
+      title: 'Hardware',
+      link: 'hardware',
+      img: '/img/category/powertool.jpg',
     },
     {
       title: 'Industrial',
@@ -24,19 +24,19 @@ const CategoryBanner = () => {
       img: '/img/category/generator.jpg',
     },
     {
-      title: 'Electrical',
-      link: 'electrical',
-      img: '/img/category/electrical.jpg',
+      title: 'Office Furnitures',
+      link: 'office-furnitures',
+      img: '/img/category/office.jpg',
     },
     {
-      title: 'Appliances',
-      link: 'appliances',
-      img: '/img/category/airfyer.jpg',
+      title: 'Plumbing',
+      link: 'plumbing',
+      img: '/img/category/plumbing.jpg',
     },
     {
-      title: 'Equipments',
-      link: 'equipment',
-      img: '/img/category/hardware.jpg',
+      title: 'Tools',
+      link: 'tools',
+      img: '/img/category/powertool.jpg',
     },
   ];
   return (
