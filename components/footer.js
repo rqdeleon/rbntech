@@ -93,7 +93,7 @@ export default function Footer(props) {
           <div className="flex gap-3">
             <Map className="flex-none min-w-8 w-8 h-8" />
             <p className="flex-1">
-              no. 3 8th St. Phase 1A, Pacita Complex 1, San Vicente 4023, San Pedro City, Philippines
+              Pacita Complex 1, San Vicente 4023, San Pedro City, Philippines
             </p>
           </div>
 
